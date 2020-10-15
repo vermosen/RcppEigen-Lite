@@ -16,7 +16,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
-    <None Include=".gitmodules" />
+    <None Include="cmake\module\utils.cmake" />
+    <None Include="conan\conanfile.py" />
+    <None Include="LICENSE" />
+    <None Include="PreLoad.cmake" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\RcppUtils\fwd\RcppUtils.h" />
+    <ClInclude Include="src\RcppUtils\RcppUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+    <Text Include="cmake\CMakeLists.txt" />
+    <Text Include="src\RcppUtils\CMakeLists.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C9E1E599-6CD6-437A-B651-B74804F44340}</ProjectGuid>
@@ -28,7 +41,7 @@
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
     <LinuxProjectType>{FC1A4D80-50E9-41DA-9192-61C0DBAA00D2}</LinuxProjectType>
     <!--the two custom variables of the project which are not showing up in the GUI-->
-    <kProjectPath>/cfp</kProjectPath>
+    <kProjectPath>/RcppUtils</kProjectPath>
     <kBinPath>/bin</kBinPath>
     <ProjectName>RcppUtils</ProjectName>
   </PropertyGroup>

@@ -38,9 +38,6 @@ if (CMAKE_PROFILE_UC STREQUAL "GCC93")
 	    set(CMAKE_MAKE_PROGRAM	 "${DEVTOOLS_ROOT}/bin/ninja" 	CACHE INTERNAL "" FORCE)
         set(CONAN_PROFILE        "gcc93"		                CACHE INTERNAL "" FORCE)
 
-        # binary analysis
-        #set(COVERAGE_COMMAND    "${DEVTOOLS_ROOT}/bin/gcov"     CACHE INTERNAL "" FORCE)
-        #set(MEMORYCHECK_COMMAND "${DEVTOOLS_ROOT}/bin/valgrind" CACHE INTERNAL "" FORCE)
 elseif(CMAKE_PROFILE_UC STREQUAL "GCC84")
 
         set(DEVTOOLS_ROOT "/opt/gcc84")
@@ -62,9 +59,6 @@ elseif(CMAKE_PROFILE_UC STREQUAL "GCC84")
 	    set(CMAKE_MAKE_PROGRAM	 "${DEVTOOLS_ROOT}/bin/ninja" 	CACHE INTERNAL "" FORCE)
         set(CONAN_PROFILE        "gcc84"		                CACHE INTERNAL "" FORCE)
 
-        # binary analysis
-        #set(COVERAGE_COMMAND    "${DEVTOOLS_ROOT}/bin/gcov"     CACHE INTERNAL "" FORCE)
-        #set(MEMORYCHECK_COMMAND "${DEVTOOLS_ROOT}/bin/valgrind" CACHE INTERNAL "" FORCE)
 else()
 	message(FATAL_ERROR "Error: ${CMAKE_PROFILE} - Unknown configuration passed. Aborting ... ")
 endif()

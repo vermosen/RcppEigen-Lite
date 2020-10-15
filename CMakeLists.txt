@@ -23,7 +23,7 @@ include("${PROJECT_HOME}/cmake/CMakeLists.txt")
 
 set(${PROJECT_NAME_U}_MAJOR_VERSION 0)
 set(${PROJECT_NAME_U}_MINOR_VERSION 1)
-set(${PROJECT_NAME_U}_BUILD_VERSION 1)
+set(${PROJECT_NAME_U}_BUILD_VERSION 2)
 
 set(${PROJECT_NAME_U}_VERSION
   ${${PROJECT_NAME_U}_MAJOR_VERSION}.${${PROJECT_NAME_U}_MINOR_VERSION}.${${PROJECT_NAME_U}_BUILD_VERSION})
@@ -65,35 +65,30 @@ message(DEBUG "CONAN_LIBS set to ${CONAN_LIBS}")
 #          add the sources          #
 #####################################
 
-include_directories(src)
+include_directories(src/RcppUtils)
 
 #####################################
 #     add the project libraries     #
 #####################################
 
-add_subdirectory(src/cfp)
+add_subdirectory(src/RcppUtils)
 
 #####################################
-#    add the project applications   #
+#     generate the conan export     #
 #####################################
 
-#add_subdirectory(R/package)
-add_subdirectory(python/package)
+export_project(
+	NAME ${PROJECT_NAME}
+	NAMESPACE ${PROJECT_NAME}
+	REVISION ${${PROJECT_NAME_U}_VERSION}
+	DIRECTORY cmake/package
+)
 
-#####################################
-#   add the project documentation   #
-#####################################
-
-# TODO: breathe does not seem to work for now on ...
-# compare to project 
-# https://github.com/PCMSolver/pcmsolver
-
-if (CFP-DOCS)
-	add_subdirectory(docs)
-endif()
-
-#####################################
-# add the test suite to the project #
-#####################################
-
-add_testsuite(DIRECTORY test)
+conan_export(
+	PACKAGE ${PROJECT_NAME}
+	REVISION ${${PROJECT_NAME_U}_VERSION}
+	USER ${CONAN_USER}
+	CHANNEL ${CONAN_CHANNEL}
+	PROFILE ${CONAN_PROFILE}
+	DIRECTORY conan
+)

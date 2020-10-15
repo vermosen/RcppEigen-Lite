@@ -4,13 +4,12 @@
 
 #include <Rcpp.h>
 
-#include "fwd/RcppUtils.h"
+#include <RcppUtils/fwd/RcppUtils.h>
 
 namespace Rcpp      {
 namespace RcppEigen {
 
   // helper trait to identify if T is a plain object type
-  // TODO: perhaps move this to its own file
   template <typename T> struct is_plain : Rcpp::traits::same_type<T, typename T::PlainObject> {};
 
   // helper trait to identify if the object has dense storage
@@ -48,8 +47,8 @@ namespace RcppEigen {
     switch (RTYPE) {
     case REALSXP: klass = T::IsRowMajor ? "dgRMatrix" : "dgCMatrix";
       break;
-      //          case INTSXP: klass = T::IsRowMajor ? "igRMatrix" : "igCMatrix";  // classes not exported
-      //              break;
+      //case INTSXP: klass = T::IsRowMajor ? "igRMatrix" : "igCMatrix";  // classes not exported
+      //  break;
     default:
       throw std::invalid_argument("RTYPE not matched in conversion to sparse matrix");
     }
@@ -369,4 +368,4 @@ namespace traits {
   };
 }}
 
-#endif // RCPPUTILS_FWD_RCPPUTILS_H
+#endif // RCPPUTILS_RCPPUTILS_H
