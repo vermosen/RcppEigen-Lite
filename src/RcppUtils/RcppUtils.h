@@ -1,6 +1,6 @@
 #pragma once
-#ifndef RCPPUTILS_FWD_RCPPUTILS_H
-#define RCPPUTILS_FWD_RCPPUTILS_H
+#ifndef RCPPUTILS_RCPPUTILS_H
+#define RCPPUTILS_RCPPUTILS_H
 
 #include <Rcpp.h>
 
