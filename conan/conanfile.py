@@ -5,7 +5,7 @@ class RcppUtilsConan(ConanFile):
     name = "RcppUtils"
     settings = "os", "compiler", "build_type", "arch"
     description = "RcppUtils lib"
-    url = "None"
+    url = "https://github.com/vermosen/RcppUtils.git"
     license = "None"
     author = "vermosen@yahoo.com"
     topics = None
@@ -15,8 +15,11 @@ class RcppUtilsConan(ConanFile):
                    '%sTargets.cmake' % name,
                    '%sTargets-*.cmake' % name]
 
+    _source_subfolder = self.name
+    _build_subfolder = 'build'
+
     def source(self):
-        pass
+        self.run('git clone --recursive %s' % self.url)
 
     def configure(self):
         self.requires("eigen/3.3.7@%s/%s" % (self.user, self.channel))
@@ -40,8 +43,9 @@ class RcppUtilsConan(ConanFile):
         else:
             exit(1)
 
-        cmake.configure(source_folder=src)
-
+        # cannot run conan command inside the build process
+        cmake.definitions["SKIP_CONAN_PACKAGE"] = 'ON'
+        cmake.configure(source_folder=src, build_folder=self._build_subfolder)
         return cmake
 
     def build(self):
