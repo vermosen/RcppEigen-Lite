@@ -17,6 +17,7 @@ class RcppUtilsConan(ConanFile):
 
     _source_subfolder = name
     _build_subfolder = 'build'
+    _runbuild = False
 
     def source(self):
         self.run('git clone --recursive %s' % self.url)
@@ -46,6 +47,7 @@ class RcppUtilsConan(ConanFile):
         return cmake
 
     def build(self):
+        self._runbuild = True
         cmake = self._configure_cmake()
         cmake.build()
         cmake.install()
@@ -54,7 +56,9 @@ class RcppUtilsConan(ConanFile):
 
         self.output.info('executing packaging in folder %s' % os.getcwd())
         self.output.info('build folder is: %s' % self.build_folder)
-        self.copy("*.h"  , dst="include", src="include")
+
+        hdrloc = 'RcppUtils/include' if self._runbuild else 'include'
+        self.copy("*.h"  , dst="include", src=hdrloc)
 
         if self.settings.os == 'Linux':
             try:
