@@ -15,7 +15,7 @@ class RcppUtilsConan(ConanFile):
                    '%sTargets.cmake' % name,
                    '%sTargets-*.cmake' % name]
 
-    _source_subfolder = self.name
+    _source_subfolder = name
     _build_subfolder = 'build'
 
     def source(self):
@@ -25,13 +25,10 @@ class RcppUtilsConan(ConanFile):
         self.requires("eigen/3.3.7@%s/%s" % (self.user, self.channel))
         self.requires("rcpp/1.0.4@%s/%s"  % (self.user, self.channel))
         
-    def configure_cmake(self):
+    def _configure_cmake(self):
 
-        src = os.path.join(self.source_folder, self._source_subfolder)
         cmake = CMake(self, set_cmake_flags=True)
-
-        self.output.info('source folder location %s' % src)
-
+        
         if self.settings.compiler == 'gcc':
             if self.settings.compiler.version in ['8', '8.4']:
                 cmake.definitions["CMAKE_PROFILE"] = 'gcc84'
@@ -45,11 +42,11 @@ class RcppUtilsConan(ConanFile):
 
         # cannot run conan command inside the build process
         cmake.definitions["SKIP_CONAN_PACKAGE"] = 'ON'
-        cmake.configure(source_folder=src, build_folder=self._build_subfolder)
+        cmake.configure(source_folder=self._source_subfolder)
         return cmake
 
     def build(self):
-        cmake = self.configure_cmake()
+        cmake = self._configure_cmake()
         cmake.build()
         cmake.install()
 
