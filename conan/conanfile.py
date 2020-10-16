@@ -54,7 +54,7 @@ class RcppUtilsConan(ConanFile):
 
         self.output.info('executing packaging in folder %s' % os.getcwd())
         self.output.info('build folder is: %s' % self.build_folder)
-        self.copy("*.h"  , dst="include", src="../include")
+        self.copy("*.h"  , dst="include", src="RcppUtils/include")
 
         if self.settings.os == 'Linux':
             try:
