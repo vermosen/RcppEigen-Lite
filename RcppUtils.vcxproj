@@ -23,8 +23,9 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\RcppUtils\fwd\RcppUtils.h" />
-    <ClInclude Include="src\RcppUtils\RcppUtils.h" />
+    <ClInclude Include="src\RcppUtils\fwd\eigen.h" />
+    <ClInclude Include="src\RcppUtils\eigen.h" />
+    <ClInclude Include="src\RcppUtils\nanotime.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />

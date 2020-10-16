@@ -1,10 +1,10 @@
 #pragma once
-#ifndef RCPPUTILS_RCPPUTILS_H
-#define RCPPUTILS_RCPPUTILS_H
+#ifndef RCPPUTILS_EIGEN_H
+#define RCPPUTILS_EIGEN_H
 
 #include <Rcpp.h>
 
-#include <RcppUtils/fwd/RcppUtils.h>
+#include <RcppUtils/fwd/eigen.h>
 
 namespace Rcpp      {
 namespace RcppEigen {
@@ -368,4 +368,4 @@ namespace traits {
   };
 }}
 
-#endif // RCPPUTILS_RCPPUTILS_H
+#endif // RCPPUTILS_EIGEN_H

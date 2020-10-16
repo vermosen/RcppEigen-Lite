@@ -1,6 +1,6 @@
 #pragma once
-#ifndef RCPPUTILS_FWD_RCPPUTILS_H
-#define RCPPUTILS_FWD_RCPPUTILS_H
+#ifndef RCPPUTILS_FWD_EIGEN_H
+#define RCPPUTILS_FWD_EIGEN_H
 
 #include <complex>
 
@@ -40,4 +40,4 @@ namespace traits {
   template<typename T> class Exporter< Eigen::Map<Eigen::SparseMatrix<T, Eigen::RowMajor> > >;
 }}
 
-#endif // RCPPUTILS_FWD_RCPPUTILS_H
+#endif // RCPPUTILS_FWD_EIGEN_H
